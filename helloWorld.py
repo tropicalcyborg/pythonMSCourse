@@ -1,21 +1,25 @@
-# This Python file uses the following encoding: utf-8
+msg = "Hello World"
+print(msg)
+print("")
 
-import os, sys
-print('')
-print('')
-print('APRENDENDO PYTHON')
-print('')
+print("DIGITE SEU NOME")    
+myname = input()
 
-name = ''
-print('chegou aqui')
+resposta = myname
 
-print('What is your name?')
-name = input()
-print(name)
+print("O nome desse palhaço é: "+ resposta)
+print()
+print()
 
-print('chegou aqui')
+print('Hello \nworld')
 
-print('Seu nome é:{name} ')
+first_name = input("Qual seu primeiro nome?")
+last_name = input("Qual seu sobrenome?")
 
-print('')
-print('')
+print("Seu nome completo é: \n")
+nome_completo = first_name.capitalize()+" "+last_name.capitalize()
+nome_completo = nome_completo.upper()
+print(nome_completo)
+print(nome_completo.count("i"))
+
+

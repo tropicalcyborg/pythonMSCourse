@@ -1,33 +1,27 @@
-#msg = "Hello World"
-#print(msg)
-#print("")
+from datetime import datetime, timedelta
 
-#print("DIGITE SEU NOME")    
-#myname = input()
-
-#resposta = myname
-
-#print("O nome desse palhaço é: "+ resposta)
 print()
 print()
 
-#print('Hello \nworld')
+aniversario = input("Qual o dia do seu aniversário (dd/mm/aa)?")
+aniversario_date = datetime.strptime(aniversario,"%d/%m/%Y")
+#print(str(aniversario_date))
 
-first_name = input("Qual seu primeiro nome?")
-last_name = input("Qual seu sobrenome?")
+trintaDiasAMais = timedelta(days=30)
+try:
+    print(trintaDiasAMais)
+except "time data '\x1b[A' does not match format '%d/%m/%Y'" as e:
+    print("Você digitou a data em formato errrado")
+finally:
+    print("Tente novamente")
 
-print("Seu nome completo é: \n")
-nome_completo = first_name.capitalize()+" "+last_name.capitalize()
-nome_completo = nome_completo.upper()
-print(nome_completo)
-#print(nome_completo.count("i"))
+desaniversario = aniversario_date + trintaDiasAMais
+print(str(desaniversario.date()))
 
-output = f"Olá, {first_name} {last_name}"
-print(output)
+print()
+print()
 
-output1 = "Hello, {} {}".format(first_name,last_name)
-output1 = output1.upper()
-print(output1)
+
 
 
 

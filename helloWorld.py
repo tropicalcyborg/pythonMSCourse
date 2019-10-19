@@ -4,19 +4,28 @@ print()
 print()
 
 aniversario = input("Qual o dia do seu aniversário (dd/mm/aa)?")
-aniversario_date = datetime.strptime(aniversario,"%d/%m/%Y")
-#print(str(aniversario_date))
+msg = "O ano do seu nascimento é: "
 
-trintaDiasAMais = timedelta(days=30)
 try:
-    print(trintaDiasAMais)
-except "time data '\x1b[A' does not match format '%d/%m/%Y'" as e:
-    print("Você digitou a data em formato errrado")
+    aniversario_date = datetime.strptime(aniversario,"%d/%m/%Y")
+except ValueError as e:
+    print("A data foi digitada errada")
+    print(aniversario)
+    msg = "Vê se digita essa merda certo dessa vez..."
 finally:
-    print("Tente novamente")
+    print(msg)
+    
 
-desaniversario = aniversario_date + trintaDiasAMais
-print(str(desaniversario.date()))
+
+try:
+    print(aniversario_date.year)
+except NameError as e:
+    pass
+else:
+    pass
+finally:
+    pass 
+
 
 print()
 print()

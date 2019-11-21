@@ -2,18 +2,22 @@
 
 import requests
 import json
+print()
+print()
+
+imagem = input ("Digite o nome da imagem que vc quer consultar: ")
 
 SUBSCRIPTION_KEY = "e86e5b9b398e44928db10c2c4e25c697"
 vision_service_address = "https://brazilsouth.api.cognitive.microsoft.com/vision/v2.0/"
 
 address = vision_service_address + "analyze"
 
-
 parameters  = {'visualFeatures':'Description',
                'language':'pt'}
 
 # Open the image file to get a file object containing the image to analyze
-image_path = "./TestImages/dog.jpg"
+#image_path = "./TestImages/dog4.jpg"
+image_path = "./TestImages/" + imagem
 
 image_data = open(image_path, "rb").read()
 
@@ -37,13 +41,17 @@ results = response.json()
 
 tgs = results["description"]["tags"]
 
+encontrado = False
+
 for perdido in tgs:
     if perdido == "cachorro":
         encontrado = True
-    else:
-        encontrado = False
+    # else:
+    #     encontrado = False
 
-    if encontrado:
-        print("Cachorro encontrado na imagem")
+if encontrado:
+    print("Cachorro encontrado na imagem")
+else:
+    print("Não há cachorros na imagem")
 
 print()

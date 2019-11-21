@@ -1,7 +1,10 @@
-
+# -*- coding: utf-8 -*-
 
 import requests
 import json
+from colorama import init, Fore, Style
+
+
 print()
 print()
 
@@ -21,14 +24,8 @@ image_path = "./TestImages/" + imagem
 
 image_data = open(image_path, "rb").read()
 
-print()
-print("Image found")
-print()
-
 headers = {"Content-Type": "application/octet-stream", "Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY}
 
-#headers    = {'Content-Type': 'application/octet-stream',
-#             'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
 
 response = requests.post(address, params= parameters, headers = headers, data = image_data)
 
@@ -46,12 +43,14 @@ encontrado = False
 for perdido in tgs:
     if perdido == "cachorro":
         encontrado = True
-    # else:
-    #     encontrado = False
 
 if encontrado:
-    print("Cachorro encontrado na imagem")
+    print(Fore.RED ,Style.BRIGHT, 'Cachorro encontrado na imagem')
+    print(Fore.WHITE, Style.NORMAL)
 else:
-    print("Não há cachorros na imagem")
+    print(Fore.BLUE, 'Não há cachorros na imagem')
+    print(Fore.WHITE)
 
 print()
+
+Style.RESET_ALL

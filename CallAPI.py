@@ -7,6 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
+import matplotlib.plot
+
+
+
+
+
 subscription_key = os.getenv('SUBSCRIPTION_KEY')
 
 

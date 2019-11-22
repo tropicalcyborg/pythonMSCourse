@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/usr/local/bin/python3",
+    "python.pythonPath": "/Users/rogerio.lima/.virtualenvs/cv/bin/python",
     "python.terminal.activateEnvironment": false
 }

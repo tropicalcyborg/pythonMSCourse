@@ -28,7 +28,7 @@ image = cv2.imread("TestImages/dog.jpg")
 # print("R={}, G={}, B={}".format(R, G, B))
 
 cv2.imshow("Cachorro", image)
-cv2.waitKey()
+# cv2.waitKey()
 
 # cao = image[498:758, 97:270]
 # cv2.imshow("cão", cao)
@@ -67,12 +67,56 @@ center = (0,h)
 M = cv2.getRotationMatrix2D(center, -90, 1.0)
 rotated = cv2.warpAffine(image, M, (h,h+w))
 
-rotatedCroped = rotated[h:h+w, 0:h]
-cv2.imshow("OpenCV Rotation", rotatedCroped)
-cv2.waitKey(0)
+# rotatedCroped = rotated[h:h+w, 0:h]
+# cv2.imshow("OpenCV Rotation", rotatedCroped)
+# cv2.waitKey(0)
 
 
 # rotation can also be easily accomplished via imutils with less code
 # rotated = imutils.rotate(image, -90)
 # cv2.imshow("Imutils Rotation", rotated)
 # cv2.waitKey(0)
+
+
+# OpenCV doesn't "care" if our rotated image is clipped after rotation
+# so we can instead use another imutils convenience function to help
+# us out
+# rotated = imutils.rotate_bound(image, 45)
+# cv2.imshow("Imutils Bound Rotation", rotated)
+# cv2.waitKey(0)
+
+
+# apply a Gaussian blur with a 11x11 kernel to the image to smooth it,
+# useful when reducing high frequency noise
+# blurred = cv2.GaussianBlur(rotated, (11, 11), 0)
+# cv2.imshow("Blurred", blurred)
+# cv2.waitKey(0)
+
+
+# draw a 2px thick red rectangle surrounding the face
+output = image.copy()
+cv2.rectangle(output, (97,498), (270, 758,), (0, 0, 255), 2)
+# cv2.imshow("Rectangle", output)
+# cv2.waitKey(0)
+
+# draw a blue 20px (filled in) circle on the image centered at
+# x=300,y=150
+# output = image.copy()
+# cv2.circle(output, (178,567), 20, (0, 0, 255), -1)
+# cv2.imshow("Circle", output)
+# cv2.waitKey(0)
+
+
+# # draw a 5px thick red line from x=60,y=20 to x=400,y=200
+# output = image.copy()
+# cv2.line(output, (60, 20), (400, 200), (0, 0, 255), 5)
+# cv2.imshow("Line", output)
+# cv2.waitKey(0)
+
+
+# draw green text on the image
+# output = image.copy()
+cv2.putText(output, "Encontrado", (104, 525), 
+cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+cv2.imshow("Text", output)
+cv2.waitKey(0)

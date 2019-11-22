@@ -3,14 +3,23 @@
 import requests
 import json
 from colorama import init, Fore, Style
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+subscription_key = os.getenv('SUBSCRIPTION_KEY')
 
 
 print()
-print()
+
 
 imagem = input ("Digite o nome da imagem que vc quer consultar: ")
 
-SUBSCRIPTION_KEY = "e86e5b9b398e44928db10c2c4e25c697"
+passW = os.getenv('PASSW')
+print()
+print(Fore.GREEN, passW)
+
+
 vision_service_address = "https://brazilsouth.api.cognitive.microsoft.com/vision/v2.0/"
 
 address = vision_service_address + "analyze"
@@ -24,7 +33,7 @@ image_path = "./TestImages/" + imagem
 
 image_data = open(image_path, "rb").read()
 
-headers = {"Content-Type": "application/octet-stream", "Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY}
+headers = {"Content-Type": "application/octet-stream", "Ocp-Apim-Subscription-Key": subscription_key}
 
 
 response = requests.post(address, params= parameters, headers = headers, data = image_data)
